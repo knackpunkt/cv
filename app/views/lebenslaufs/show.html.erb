@@ -1,0 +1,118 @@
+ <script src="pdf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+    <div class="col-md-12 text-right mb-3">
+                <button class="btn btn-primary" id="download"> download pdf</button>
+            </div>
+            <div class="card" id="invoice">
+<div class="row">
+  <div class="column" id="left" style="width: 30%">
+     <div id="profile-pic"><% if !@lebenslauf.avatar.file.nil? %>
+      <%= link_to image_tag(@lebenslauf.avatar_url, class: "has-text-centered") %>
+    <% end %></div>
+ <h3 style="background: white;">Persönlichen Daten</h3>
+  <p><%= @lebenslauf.name %></p>
+  <p><%= @lebenslauf.address %></p>
+  <p><%= @lebenslauf.postcode %> <%= @lebenslauf.city %></p>
+  <p><%= @lebenslauf.birth %></p>
+  <p><%= @lebenslauf.nationality %></p>
+  <h3 style="background: white;">Kontakte:</h3>
+  <p><span id="span">Telefone: </span> <%= @lebenslauf.phone %></p>
+  <p><span id="span">E-Mail: </span>  <%= @lebenslauf.email %></p>
+  <p><span id="span">Facebook:</span>  <%= @lebenslauf.facebook %></p>
+  <p><span id="span">LinkedIn:</span> <%= @lebenslauf.linkedin %></p>
+
+  <h3 style="background: white;">Kompetenzn:</h3>
+  <p><%= @lebenslauf.skill %> </p>
+  <p><%= @lebenslauf.skill1 %> </p>
+  <p><%= @lebenslauf.skill2 %> </p>
+  <p><%= @lebenslauf.skill3 %> </p>
+  <p><%= @lebenslauf.skill4 %></p>
+  <p><%= @lebenslauf.skill5 %></p>
+  <p><%= @lebenslauf.skill6 %></p>
+  <p><%= @lebenslauf.skill7 %></p>
+
+  <h3 style="background: white;">Sprachen:</h3>
+  <p><%= @lebenslauf.language %> <span><%= @lebenslauf.niveau %></span></p>
+
+  <p><%= @lebenslauf.language1 %> <span><%= @lebenslauf.niveau1 %></span></p>
+
+  <p><%= @lebenslauf.language2 %> <span><%= @lebenslauf.niveau2 %></span></p>
+
+  <p><%= @lebenslauf.language3 %> <span><%= @lebenslauf.niveau3 %></span></p>
+
+
+  </div>
+   <div class="column" id="right" style="width: 70%">
+  <div class="beruf">
+    <h1 id="beruf"> Beruflichen Erfahrungen</h1>
+    <h4 id="company-title"><%= @lebenslauf.jobtitle %></h4>
+    <h4 id="company"><%= @lebenslauf.company %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @lebenslauf.start %> <strong>  </strong> <%= @lebenslauf.end %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @lebenslauf.detail %> </h4>
+<br>
+     <h4 id="company-title"><%= @lebenslauf.jobtitle1 %></h4>
+    <h4 id="company"><%= @lebenslauf.company1 %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @lebenslauf.start1 %> <strong>  </strong> <%= @lebenslauf.end1 %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @lebenslauf.detail1 %> </h4>
+    <br>
+     <h4 id="company-title"><%= @lebenslauf.jobtitle2 %></h4>
+    <h4 id="company"><%= @lebenslauf.company2 %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @lebenslauf.start2 %> <strong>  </strong> <%= @lebenslauf.end2 %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @lebenslauf.detail2 %> </h4>
+    <br>
+     <h4 id="company-title"><%= @lebenslauf.jobtitle3 %></h4>
+    <h4 id="company"><%= @lebenslauf.company3 %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @lebenslauf.start3 %> <strong>  </strong> <%= @lebenslauf.end1 %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @lebenslauf.detail3 %> </h4>
+
+  </div>
+    <h1 id="bildung"> Bildung :</h1>
+  <div class="education">
+  <h4 id="degree" style="font-weight: bold;"><%= @lebenslauf.degree %></h4>
+
+  <h5 id="degree"><%= @lebenslauf.uni %></h5>
+
+  <h5 id="degree"><string>Grade / Noten : </string> <%= @lebenslauf.grade %></h5>
+
+  <h5 id="degree"><strong> </strong> <%= @lebenslauf.year %></h5>
+  <br>
+  <h4 id="degree" style="font-weight: bold;" > <%= @lebenslauf.degree1 %></h4>
+
+  <h5 id="degree"> <%= @lebenslauf.uni1 %></h5>
+
+  <h5 id="degree"><string>Grade / Noten :</string> <%= @lebenslauf.grade1 %></h5>
+
+  <h5 id="degree"><strong> Abgeschlossen Jahr :</strong> <%= @lebenslauf.year1 %></h5>
+  <br>
+  <h4 id="degree" style="font-weight: bold;" > <%= @lebenslauf.degree2 %></h4>
+
+  <h5 id="degree"> <%= @lebenslauf.uni2 %></h5>
+
+  <h5 id="degree"><string></string> <%= @lebenslauf.grade2 %></h5>
+
+  <h5 id="degree"><strong></strong> <%= @lebenslauf.year2 %></h5>
+  <br>
+  </div>
+  </div>
+</div>
+</div>
+   <script>
+      window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("invoice");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'myfile.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+}
+</script>
+

@@ -1,0 +1,62 @@
+<%= form_with(model: job, local: true) do |form| %>
+  <% if job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+
+      <ul>
+      <% job.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="column">
+
+  <div class="field">
+    <label>Title des Job</label><br>
+    <%= form.text_field :title, id: :job_title %>
+  </div>
+  <div class="field">
+    <label>Voraussetzungeen</label><br>
+    <%= form.text_area :requirement, id: :job_requirement %>
+  </div>
+
+  <div class="field">
+    <label>Email</label><br>
+    <%= form.text_field :email, id: :job_email %>
+  </div>
+
+  <div class="field">
+    <label>Anschrift</label><br>
+    <%= form.text_field :location, id: :job_location %>
+  </div>
+</div>
+<div class="column">
+  <div class="field">
+    <label>Wenn</label><br>
+    <%= form.text_field :start, id: :job_start %>
+  </div>
+
+  <div class="field">
+    <label>Entgehalt</label><br>
+    <%= form.text_field :salary, id: :job_salary %>
+  </div>
+
+  <div class="field">
+    <label>Job Category</label><br>
+    <span class="select">
+              <%= form.select :job_type, collection: Job::JOB_TYPES, prompt: "Select a job type" %>
+            </span>
+  </div><br>
+  <div class="field">
+    <label>Beschreibung des Job</label><br>
+    <%= form.text_area :description, id: :job_description %>
+  </div>
+  </div>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+

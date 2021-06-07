@@ -1,0 +1,637 @@
+
+<style>
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 20%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}*/
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+  position: fixed;
+  z-index: 1;
+  top: 110px;
+  right: 5px;
+  overflow-x: hidden;
+  width: 12.6%;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.tab button:hover{
+    background: orangered;
+   color: white;
+   font-weight: bold;
+}
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display: none;
+  padding: 10px 10px;
+  height: 100%;
+  width: 90%;
+  float: left;
+}
+
+
+.row {
+  margin : 0 0;
+
+  width: 98%;
+}
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.3%;
+  padding: 10px;
+  border: 3px solid lightgrey;
+   border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+    height: 400px;
+
+
+   /* Should be removed. Only for demonstration */
+}
+.column-1 {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  border: 3px solid lightgrey;
+   border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  height: auto;
+
+   /* Should be removed. Only for demonstration */
+}
+.column-0 {
+  width: 30%;
+  padding: 10px;
+  border: 3px solid lightgrey;
+   border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  height: 400px;
+
+   /* Should be removed. Only for demonstration */
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.column-3 {
+  width: 35%;
+  margin-right: auto;
+  margin-left: auto;
+}
+/* Set height of body and the document to 100% */
+
+
+input,  textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 100%;
+}
+
+input[type=text], select {
+  padding: 4px 4px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color:lightseagreen ;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+input[type=submit]:hover {
+  background-color: #1e90ffcf;
+}
+.container {
+  width: 100%;
+}
+
+h1 {
+    font-size: 19px;
+    margin-top: 0;
+    text-align: center;
+}
+
+@media screen and (max-width: 992px) {
+  .column {
+    width: 100%;
+  }
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+   .column {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+   .column-1 {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+   .tab{
+    width: 25%;
+    font-size:12px;
+  }
+}
+@media screen and (max-width: 600px) {
+   .tabcontent{
+    width: 75%;
+
+  }
+}
+
+</style>
+
+<div class="tab">
+ <button class="tablink" onclick="openPage('Index', this, '#40E0D0')" id="defaultOpen">Persönlichen Daten</button>
+  <button class="tablink" onclick="openPage('Home', this, '#40E0D0')">Studium</button>
+<button class="tablink" onclick="openPage('News', this, '#40E0D0')">Erfahrungen  / Arbeit</button>
+<button class="tablink" onclick="openPage('job', this, '#40E0D0')">Mehr  Erfahrung</button>
+<button class="tablink" onclick="openPage('Contact', this, '#40E0D0')">Kompetenzen</button>
+<button class="tablink" onclick="openPage('About', this, '#40E0D0')">Sprachen</button>
+</div>
+<%= form_with(model: lebenslauf, local: true) do |form| %>
+  <% if lebenslauf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lebenslauf.errors.count, "error") %> prohibited this lebenslauf from being saved:</h2>
+
+      <ul>
+      <% lebenslauf.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div id="Index" class="tabcontent">
+    <h1>Geben Sie Ihre persönlichen Daten ein</h1>
+    <div class="row">
+      <div class="column-1" style="height: 459px">
+        <div class="field">
+  <label>Image</label>
+  <%= form.file_field :avatar, style: 'padding: 27px;' %>
+</div>
+  <div class="field">
+    <label>Name</label>
+    <%= form.text_field :name, id: :cv_name, placeholder: 'Monther Ahmad' %>
+  </div>
+
+  <div class="field">
+    <label>Straße, Nr</label>
+    <%= form.text_field :address, id: :cv_address, placeholder: 'Meller str 28'  %>
+  </div>
+
+  <div class="field">
+    <label>Stadt</label>
+    <%= form.text_field :city, id: :cv_city, placeholder: 'Berlin' %>
+  </div>
+
+  <div class="field">
+    <label>PLZ</label>
+    <%= form.text_field :postcode, id: :cv_postcode, placeholder: '13503' %>
+  </div>
+
+</div>
+  <div class="column-1" style="height: 459px">
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, id: :cv_phone, placeholder: '0049162902xxxxx' %>
+  </div>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :cv_email, placeholder: 'example@example.com' %>
+  </div>
+
+  <div class="field">
+    <label>Geburtsdatum</label>
+    <%= form.date_select :birth, id: :cv_birth, :start_year => 1950, :end_year => 2010 %>
+  </div>
+
+  <div class="field">
+    <label>Staatsangehörigkeit</label>
+    <%= form.text_field :nationality, id: :cv_nationality, placeholder: 'German, Syrian etc..' %>
+  </div>
+    <div class="field">
+    <%= form.label :facebook %>
+    <%= form.text_field :facebook, id: :cv_facebook %>
+  </div>
+
+  <div class="field">
+    <%= form.label :linkedin %>
+    <%= form.text_field :linkedin, id: :cv_linkedin %>
+  </div>
+ </div>
+</div>
+</div>
+<div id="Home" class="tabcontent">
+  <h1>Füllen Sie Ihre Eduaction aus </h1>
+  <div class="row">
+<div class="column">
+<!-- Education-->
+  <div class="field">
+    <label>Grad</label><br>
+    <%= form.text_field :degree, id: :cv_degree, placeholder: 'Bachelor of Arts, Master of Computer' %>
+  </div>
+
+  <div class="field">
+    <label>Universität</label>
+    <%= form.text_field :uni, id: :cv_uni, placeholder: 'Damascus University, Berlin University' %>
+  </div>
+
+  <div class="field">
+    <label>Grade</label>
+    <%= form.text_field :grade, id: :cv_grade, placeholder: '70% ..' %>
+  </div>
+
+  <div class="field">
+    <label>Abschlussjahr</label>
+    <%= form.text_field :year, id: :cv_year, placeholder: '2010' %>
+  </div>
+</div>
+  <div class="column">
+  <div class="field">
+    <label>Degree</label><br>
+    <%= form.text_field :degree1, id: :cv_degree1, placeholder: 'Bachelor of Arts, Master of Computer' %>
+  </div>
+
+  <div class="field">
+    <label>Universität</label>
+    <%= form.text_field :uni1, id: :cv_uni1, placeholder: 'Damascus University, Berlin University' %>
+  </div>
+
+  <div class="field">
+    <label>Grade</label>
+    <%= form.text_field :grade1, id: :cv_grade1, placeholder: '70% ..' %>
+  </div>
+
+  <div class="field">
+    <label>Abschluss Jahr</label>
+    <%= form.text_field :year1, id: :cv_year1, placeholder: '2010' %>
+  </div>
+</div>
+
+<div class="column">
+  <div class="field">
+    <label>Degree</label><br>
+    <%= form.text_field :degree2, id: :cv_degree2, placeholder: 'Bachelor of Arts, Master of Computer' %>
+  </div>
+
+  <div class="field">
+    <label>Universität</label>
+    <%= form.text_field :uni2, id: :cv_uni2, placeholder: 'Damascus University, Berlin University' %>
+  </div>
+
+  <div class="field">
+    <label>Grade</label>
+    <%= form.text_field :grade2, id: :cv_grade2, placeholder: '70% ..' %>
+  </div>
+
+  <div class="field">
+    <label>Abschluss Jahr</label>
+    <%= form.text_field :year2, id: :cv_year2, placeholder: '2010' %>
+  </div>
+  </div>
+ </div>
+</div>
+<!--
+  <div class="field">
+    <%= form.label :degree3 %>
+    <%= form.text_field :degree3, id: :cv_degree3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uni3 %>
+    <%= form.text_field :uni3, id: :cv_uni3 %>
+  </div>
+  <div class="field">
+    <%= form.label :grade3 %>
+    <%= form.text_field :grade3, id: :cv_grade3 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year3 %>
+    <%= form.date_field :year3, id: :cv_year3 %>
+  </div>
+
+<div class="column">
+  <div class="field">
+    <%= form.label :degree4 %>
+    <%= form.text_field :degree4, id: :cv_degree4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uni4 %>
+    <%= form.text_field :uni4, id: :cv_uni4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade4 %>
+    <%= form.text_field :grade4, id: :cv_grade4 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year4 %>
+    <%= form.date_field :year4, id: :cv_year4 %>
+  </div> -->
+<!--
+  <div class="field">
+    <%= form.label :degree5 %>
+    <%= form.text_field :degree5, id: :cv_degree5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uni5 %>
+    <%= form.text_field :uni5, id: :cv_uni5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grade5 %>
+    <%= form.text_field :grade5, id: :cv_grade5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year5 %>
+    <%= form.date_field :year5, id: :cv_year5 %>
+  </div>-->
+
+
+<div id="News" class="tabcontent">
+<h1>Füllen Sie Ihre praktischen Erfahrungen und Ihre Arbeit aus</h1>
+<div class="row">
+  <div class="column-1">
+  <div class="field">
+    <label>Unternehmen</label>
+    <%= form.text_field :company, id: :cv_company, placeholder: ' German Travel Agency' %>
+  </div>
+
+  <div class="field">
+    <label>Title des Job</label>
+    <%= form.text_field :jobtitle, id: :cv_jobtitle, placeholder: ' Teacher , Recepetionist' %>
+  </div>
+
+  <div class="field">
+    <label>Anfang  </label>
+    <%= form.text_field :start, id: :cv_start, placeholder: '2018' %>
+
+  </div>
+
+  <div class="field">
+    <label>Ende </label>
+    <%= form.text_field :end, id: :cv_end, placeholder: '2020' %>
+  </div>
+
+  <div class="field">
+    <label>Beschreibung</label>
+    <%= form.text_area :detail, id: :cv_detail, placeholder: 'Descripe Your Tasks in this Job etc..' %>
+  </div>
+</div>
+  <div class="column-1">
+  <div class="field">
+    <label>Unternehmen</label>
+    <%= form.text_field :company1, id: :cv_company1, placeholder: ' German Travel Agency' %>
+  </div>
+
+  <div class="field">
+    <label>Title des Job</label>
+    <%= form.text_field :jobtitle1, id: :cv_jobtitle1, placeholder: ' Teacher , Recepetionist' %>
+  </div>
+
+  <div class="field">
+    <label>Anfang </label>
+    <%= form.text_field :start1, id: :cv_start1, placeholder: '2018' %>
+
+  </div>
+
+  <div class="field">
+    <label>Ende </label>
+    <%= form.text_field :end1, id: :cv_end1, placeholder: '2020' %>
+  </div>
+
+  <div class="field">
+    <label>Beschreibung</label>
+    <%= form.text_area :detail1, id: :cv_detail1, placeholder: 'Descripe Your Tasks in this Job etc..' %>
+  </div>
+   </div>
+ </div>
+</div>
+<!--
+
+ -->
+ <div id="job" class="tabcontent">
+  <h1>Mehr praktische Erfahrungen und Arbeit</h1>
+<div class="row">
+  <div class="column-1">
+  <div class="field">
+    <label>Unternehmen</label>
+    <%= form.text_field :company2, id: :cv_company2, placeholder: ' German Travel Agency' %>
+  </div>
+
+  <div class="field">
+    <label>Title des Job</label>
+    <%= form.text_field :jobtitle2, id: :cv_jobtitle2, placeholder: ' Teacher , Recepetionist' %>
+  </div>
+
+  <div class="field">
+    <label>Anfang </label>
+    <%= form.text_field :start2, id: :cv_start2, placeholder: '2018' %>
+
+  </div>
+
+  <div class="field">
+    <label>Ende </label>
+    <%= form.text_field :end2, id: :cv_end2, placeholder: '2020' %>
+  </div>
+
+  <div class="field">
+    <label>Unternehmen</label>
+    <%= form.text_area :detail2, id: :cv_detail2, placeholder: 'Descripe Your Tasks in this Job etc..' %>
+  </div>
+</div>
+<div class="column-1">
+  <div class="field">
+    <label>Unternehmen</label>
+    <%= form.text_field :company3, id: :cv_company3, placeholder: ' German Travel Agency' %>
+  </div>
+
+  <div class="field">
+    <label>Title des Job</label>
+    <%= form.text_field :jobtitle3, id: :cv_jobtitle3, placeholder: ' Teacher , Recepetionist' %>
+  </div>
+
+  <div class="field">
+    <label>Anfang </label>
+    <%= form.text_field :start3, id: :cv_start3, placeholder: '2018' %>
+
+  </div>
+
+  <div class="field">
+    <label>Ende</label>
+    <%= form.text_field :end3, id: :cv_end3, placeholder: '2020' %>
+  </div>
+
+  <div class="field">
+    <label>Beschreibung</label>
+    <%= form.text_area :detail3, id: :cv_detail3, placeholder: 'Descripe Your Tasks in this Job etc..' %>
+  </div>
+   </div>
+ </div>
+</div>
+<div id="Contact" class="tabcontent">
+ <h1> Füllen Sie Ihre Fähigkeiten aus</h1>
+<div class="row">
+  <div class="column-1">
+ <ul>
+  <label>Kompetenz</label>
+   <li><%= form.text_field :skill, id: :cv_skill,  placeholder: '1- Kompetenz / Microsoft' %></li>
+  <label>Kompetenz</label>
+   <li><%= form.text_field :skill1, id: :cv_skill1, placeholder: '2- Kompetenz / Windows' %></li>
+  <label>Kompetenz</label>
+   <li><%= form.text_field :skill2, id: :cv_skill2, placeholder: '3- Kompetenz / Resservation System' %></li>
+  <label>Kompetenz</label>
+   <li><%= form.text_field :skill3, id: :cv_skill3, placeholder: '4- Kompetenz / html / Css etc ' %></li>
+   </ul>
+ </div>
+<div class="column-1">
+  <ul>
+    <label>Kompetenz</label>
+    <li><%= form.text_field :skill4, id: :cv_skill4, placeholder: '5- Kompetenz / Javascript ' %></li>
+    <label>Kompetenz</label>
+   <li><%= form.text_field :skill5, id: :cv_skill5, placeholder: '6- Kompetenz / Photoshop' %></li>
+   <label>Kompetenz</label>
+  <li><%= form.text_field :skill6, id: :cv_skill6, placeholder: '7- Kompetenz /  ' %></li>
+  <label>Kompetenz</label>
+  <li><%= form.text_field :skill7, id: :cv_skill7, placeholder: '8- Kompetenz ' %></li>
+  </ul>
+  </div>
+ </div>
+</div>
+<div id="About" class="tabcontent">
+<h1>Füllen Sie die Sprachen aus, die Sie sprechen</h1>
+<div class="row">
+  <div class="column-1">
+  <div class="field">
+    <label>Sprache</label>
+   <%= form.text_field :language, id: :cv_language, placeholder: 'German , English etc...' %>
+  </div>
+
+  <div class="field">
+   <label>Level</label>
+    <%= form.text_field :niveau, id: :cv_niveau, placeholder: 'Your Level Advanced, Native, Intermediate etc..' %>
+  </div>
+
+  <div class="field">
+    <label>Sprache</label>
+    <%= form.text_field :language1, id: :cv_language1, placeholder: 'Arabic , Turkish etc...' %>
+  </div>
+
+
+
+  <div class="field">
+    <label>Level</label>
+    <%= form.text_field :niveau1, id: :cv_niveau1, placeholder: 'Your Level Advanced, Native, Intermediate etc..' %>
+  </div>
+</div>
+<div class="column-1">
+  <div class="field">
+    <label>Sprache</label>
+    <%= form.text_field :language2, id: :cv_language2, placeholder: 'French , Spanish etc...' %>
+  </div>
+
+  <div class="field">
+    <label>Level</label>
+    <%= form.text_field :niveau2, id: :cv_niveau2, placeholder: 'Your Level Advanced, Native, Intermediate etc..' %>
+  </div>
+
+  <div class="field">
+    <label>Sprache</label>
+    <%= form.text_field :language3, id: :cv_language3, placeholder: 'German , English etc...' %>
+  </div>
+
+  <div class="field">
+    <label>Level</label>
+    <%= form.text_field :niveau3, id: :cv_niveau3, placeholder: 'Your Level Advanced, Native, Intermediate etc..' %>
+  </div>
+</div>
+</div><br><br>
+  <div class="row">
+    <div class="column-3">
+    <%= form.submit 'Erstellen' %>
+  </div>
+ </div>
+</div>
+<% end %>
+</div>
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>

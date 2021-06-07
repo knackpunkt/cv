@@ -1,0 +1,2 @@
+module LebenslaufsHelper
+end

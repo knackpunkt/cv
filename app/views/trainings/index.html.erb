@@ -1,0 +1,24 @@
+<%= render 'panel' %>
+<p id="notice"><%= notice %></p>
+
+    <% @trainings.each do |training| %>
+    <div class="center">
+      <h3> <%= training.frage %></h3>
+      <p><%= training.antwort %></p>
+      <h6> <%= training.job_type %> </h6>
+
+
+       <%#= link_to 'Show', training %>
+
+
+       <%= link_to 'Edit', edit_training_path(training) %>
+       <%= link_to 'Destroy', training, method: :delete, data: { confirm: 'Are you sure?' } %>
+       </div>
+    <% end %>
+
+<br>
+
+<%= link_to 'New Training', new_training_path %>
+<br>
+<br>
+<br>

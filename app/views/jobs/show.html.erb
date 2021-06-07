@@ -1,0 +1,135 @@
+<style>
+.row {
+    margin: 0 0;
+  }
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  width: 100%;
+  padding: 2px;
+  text-align: center;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f1f1f1;
+  height: auto;
+  margin-bottom:10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    margin-left: 0%;
+
+  }
+}
+
+/* Style the counter cards */
+
+.column:hover {
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.card-profile h3 {
+  font-size: 27px;
+  color: cadetblue;
+}
+/*
+.card-profile h3:hover {
+  color: dodgerblue;
+}*/
+.card-profile h4 {
+  text-align: center;
+  font-size: 17px;
+}
+
+.row #profile {
+  color: orangered;
+  text-align: center;
+}
+strong{
+  color: cadetblue;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+h1 {
+  text-align: center;
+  color: orangered;
+}
+p {
+  color: black;
+}
+.apply .btn {
+  width: 40%;
+  background-color:mediumseagreen;
+  color: white;
+  padding: 10px;
+}
+.apply .btn:hover {
+  background: orangered;
+}
+.btns {
+  padding: 20px;
+
+}
+.btns .btn {
+  width: 30%;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+</style>
+<p id="notice"><%= notice %></p>
+<div class="container">
+<div class="row">
+   <div class="column">
+
+ <h1> <%= @job.title %></h1>
+
+  <p><strong> Beschreibung des Job : </strong> <br> <%= @job.description %></p>
+
+  <p><strong> Voraussetzungen : </strong> <br> <%= @job.requirement %></p>
+
+  <h6><strong> Email: </strong><%= @job.email %></h6>
+
+  <p><strong> Wo: </strong> <%= @job.location %></p>
+
+  <p><strong> Wann: </strong> <%= @job.start %></p>
+
+  <p><strong> Entgehalt: </strong> <%= @job.salary %> €</p>
+
+  <p><%= @job.job_type %></p>
+      <div class="apply"><button class="btn btn-info">Apply Now</button></div><br>
+      <%= link_to 'zurück zur Startseite', jobs_path, class: 'btn btn-dark' %>
+      <% if logged_in? && current_user.admin? %>
+      <%= link_to 'Edit', edit_job_path(@job) %> |
+
+      <% end %>
+  </div>
+
+ </div>
+</div>
+
+

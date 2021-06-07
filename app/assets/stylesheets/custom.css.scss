@@ -1,0 +1,66 @@
+$navbar-default-bg: black;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+.row {
+  margin: 0 0;
+}
+.container-fluid {
+   position: fixed;
+   background-color: black;
+   top: 0;
+   width:100%;
+   z-index: 99;
+   transition: 0.4s;
+
+}
+#logo {
+  color:white;
+  background: lightseagreen;
+}
+#logo:hover {
+   background: orangered;
+}
+#bs-example-navbar-collapse-1 li a{
+  color:white;
+}
+#bs-example-navbar-collapse-1 li a:hover {
+  background: orangered;
+}
+.dropdown-menu > li > a {
+    display: block;
+    clear: both;
+    font-weight: normal;
+    font-size: 15px;
+    color: #333333;
+    background: lightseagreen;
+    white-space: nowrap;
+    text-align: center;
+
+  text-decoration: none;
+  text-align: left;
+  }
+.dropdown-menu > li > a:hover {
+  background-color: red;
+  color: white;
+  display:block;
+}
+.dropdown:hover .dropdown-menu {
+  display: block;
+
+}
+
+.nav li {
+  margin-left: 2px;
+
+}
+
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+

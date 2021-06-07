@@ -1,0 +1,132 @@
+<style>
+  .cards-list {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+
+}
+
+.card_p {
+  margin: 10px auto;
+  width: 23%;
+  height: 39px;
+  /*border-radius: 40px;*/
+  cursor: pointer;
+  transition: 0.4s;
+}
+ .cards-list1 {
+  z-index: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+}
+
+.card_all {
+  margin: 10px auto;
+  width: 48%;
+  height: 39px;
+  /*border-radius: 40px;*/
+  cursor: pointer;
+  transition: 0.4s;
+}
+/*.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25),
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
+*/
+
+.card_p a, .card_all a  {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+.btn {
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #f1f1f1;
+   }
+   /*#5bc0de* inof color */
+
+
+.card_p a:hover {
+  color: white;
+}
+.card_all a:hover {
+  color: white;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card_p {
+    /* On small screens, we are no longer using row direction but column */
+    width: 49%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .card_p a {
+    /* On small screens, we are no longer using row direction but column */
+    font-size: 14px;
+  }
+}
+@media (min-width: 1200px) {
+.container {
+    width: 98%;
+}
+}
+</style>
+
+<div class="cards-list1">
+  <div class="card_all" style="width: 40%;, margin-right: 30%">
+    <%= link_to 'All Jobs', jobs_path, class: 'btn btn-info' %>
+  </div>
+</div>
+<div class="cards-list">
+  <div class="card_p">
+    <%= link_to 'Bau,HandWerk & Produktion', jobs_path(job_type: "HandWerk & Produktion"), class: 'btn btn-info' %>
+</div>
+
+
+  <div class="card_p">
+     <%= link_to 'Büroarbeit & Verwaltung', jobs_path(job_type: "Büroarbeit & Verwaltung"), class: 'btn btn-info' %>
+  </div>
+
+    <div class="card_p">
+     <%= link_to 'Gastronomie & Tourismus', jobs_path(job_type: "Gastronomie & Tourismus"), class: 'btn btn-info' %>
+  </div>
+
+  <div class="card_p">
+    <%= link_to 'Kundenservice & Callcenter', jobs_path(job_type: "Kundenservice & Callcenter"), class: 'btn btn-info'  %>
+  </div>
+</div>
+
+<div class="cards-list">
+  <div class="card_p">
+    <%= link_to 'Sozieler Sektor', jobs_path(job_type: "Sozieler Sektor"), class: 'btn btn-info' %>
+  </div>
+
+  <div class="card_p">
+    <%= link_to 'Transport, Logiskit', jobs_path(job_type: "Transport, Logiskit"), class: 'btn btn-info' %>
+  </div>
+
+  <div class="card_p">
+    <%= link_to 'Vertrieb & Verkauf', jobs_path(job_type: "Vertrieb & Verkauf"), class: 'btn btn-info' %>
+  </div>
+
+  <div class="card_p">
+     <%= link_to 'Weitere Jobs', jobs_path(job_type: "Weitere Jobs"), class: 'btn btn-info' %>
+  </div>
+</div>
+

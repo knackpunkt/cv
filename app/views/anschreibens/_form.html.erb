@@ -1,0 +1,101 @@
+<style>
+  .column {
+    height: 450px;
+  }
+  h2 {
+    text-align: center;
+  }
+  input[type=submit] {
+  background-color:lightseagreen ;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+input[type=submit]:hover {
+  background-color: #1e90ffcf;
+}
+.actions {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+<%= form_with(model: anschreiben, local: true) do |form| %>
+  <% if anschreiben.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(anschreiben.errors.count, "error") %> prohibited this anschreiben from being saved:</h2>
+
+      <ul>
+      <% anschreiben.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2> Geben Sie Ihre Daten ein um die Anschreiben zu haben.  </h2>
+<div class="row">
+  <div class="column">
+  <div class="field">
+    <label>Name:</label>
+    <%= form.text_field :name, id: :anschreiben_name, placeholder: 'Ihren Name' %>
+  </div>
+
+  <div class="field">
+    <label>Adess & Haus Nr</label>
+    <%= form.text_field :adess, id: :anschreiben_adess, placeholder: 'Meller Str 17' %>
+  </div>
+
+  <div class="field">
+   <label>PLZ</label>
+    <%= form.text_field :plz, id: :anschreiben_plz, placeholder: '13404 etc'%>
+  </div>
+
+  <div class="field">
+    <label>Stadt</label>
+    <%= form.text_field :city, id: :anschreiben_city, placeholder: 'Berlin' %>
+  </div>
+
+   <div class="field">
+    <label>Datum</label>
+    <%= form.date_select :datum, id: :anschreiben_datum, placeholder: '12.12.2021' %>
+  </div>
+  <div class="field">
+    <label>Unternehme Name:</label>
+    <%= form.text_field :company_name, id: :anschreiben_company_name, placeholder: 'BMW, Lidl, etc..' %>
+  </div>
+  </div>
+  <div class="column">
+  <div class="field">
+    <label>Unternehme Adress</label>
+    <%= form.text_field :comapay_adress, id: :anschreiben_comapay_adress, placeholder: 'Haut str 10' %>
+  </div>
+
+ <div class="field">
+   <label>PLZ</label>
+    <%= form.text_field :plzz, id: :anschreiben_plzz, placeholder: '13404 etc'%>
+  </div>
+  <div class="field">
+    <label>Unternehme Stadt</label>
+    <%= form.text_field :company_city, id: :anschreiben_company_city, placeholder: 'Berlin ' %>
+  </div>
+
+  <div class="field">
+    <label>Bewerbung als </label>
+    <%= form.text_field :bewerbung, id: :anschreiben_bewerbung, placeholder: 'Empfangsmitarbiter, Verkäuferin' %>
+  </div>
+
+  <div class="field">
+    <label>Stelle</label>
+    <%= form.text_field :stelle, id: :anschreiben_stelle, placeholder: 'Empfangsmitarbiter, Verkäuferin' %>
+  </div>
+</div>
+</div>
+  <div class="actions">
+    <%= form.submit 'Erstellen' %>
+  </div>
+<% end %>

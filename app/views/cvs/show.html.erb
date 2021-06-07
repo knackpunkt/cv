@@ -1,0 +1,142 @@
+ <script src="pdf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+    <div class="col-md-12 text-right mb-3">
+                <button class="btn btn-primary" id="download"> download pdf</button>
+            </div>
+            <div class="card" id="invoice">
+
+<div class="row">
+  <div class="column" id="left" style="width: 30%">
+    <div id="profile-pic"><% if !@cv.avatar.file.nil? %>
+      <%= link_to image_tag(@cv.avatar_url, class: "has-text-centered") %>
+    <% end %></div>
+ <h3 style="background: white;">Personal Information</h3>
+  <p><%= @cv.name %></p>
+  <p><%= @cv.address %></p>
+  <p><%= @cv.postcode %> <%= @cv.city %></p>
+  <p><%= @cv.birth %></p>
+  <p><%= @cv.nationality %></p>
+  <h3 style="background: white;">Contact:</h3>
+  <p><span id="span">Telefone: </span> <%= @cv.phone %></p>
+  <p><span id="span">E-Mail: </span>  <%= @cv.email %></p>
+  <p><span id="span">Facebook:</span>  <%= @cv.facebook %></p>
+  <p><span id="span">LinkedIn:</span> <%= @cv.linkedin %></p>
+
+  <h3 style="background: white;">Skills:</h3>
+  <p><%= @cv.skill %> </p>
+  <p><%= @cv.skill1 %> </p>
+  <p><%= @cv.skill2 %> </p>
+  <p><%= @cv.skill3 %> </p>
+  <p><%= @cv.skill4 %></p>
+  <p><%= @cv.skill5 %></p>
+  <p><%= @cv.skill6 %></p>
+  <p><%= @cv.skill7 %></p>
+
+  <h3 style="background: white;">Languages:</h3>
+  <p><%= @cv.language %> <span><%= @cv.level %></span></p>
+
+  <p><%= @cv.language1 %> <span><%= @cv.levela %></span></p>
+
+  <p><%= @cv.language2 %> <span><%= @cv.levelb %></span></p>
+
+  <p><%= @cv.language3 %> <span><%= @cv.levelc %></span></p>
+
+
+  </div>
+   <div class="column" id="right" style="width: 70%">
+  <div class="beruf">
+    <h1 id="beruf"> Practical Experience</h1>
+    <h4 id="company-title"><%= @cv.jobtitle %></h4>
+    <h4 id="company"><%= @cv.company %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @cv.yea3 %> <strong>  </strong> <%= @cv.yea4 %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @cv.detail %> </h4>
+<br>
+     <h4 id="company-title"><%= @cv.jobtitle1 %></h4>
+    <h4 id="company"><%= @cv.company1 %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @cv.yea5 %> <strong>  </strong> <%= @cv.yea6 %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @cv.detail1 %> </h4>
+    <br>
+     <h4 id="company-title"><%= @cv.jobtitle2 %></h4>
+    <h4 id="company"><%= @cv.company2 %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @cv.yea7 %> <strong>  </strong> <%= @cv.yea8 %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @cv.detail2 %> </h4>
+    <br>
+     <h4 id="company-title"><%= @cv.jobtitle3 %></h4>
+    <h4 id="company"><%= @cv.company3 %></h4>
+    <h4 id="start" style="text-align:left;"> <%= @cv.yea9 %> <strong>  </strong> <%= @cv.yea10 %> </h4>
+    <h4 id="detail" style="text-align:left;"> <%= @cv.detail3 %> </h4>
+
+  </div>
+    <h1 id="bildung"> Education / Qualification :</h1>
+  <div class="education">
+  <h4 id="degree" style="font-weight: bold;"><%= @cv.degree %></h4>
+
+  <h5 id="degree"><%= @cv.uni %></h5>
+
+  <h5 id="degree"><string>Grade / Noten : </string> <%= @cv.grade %></h5>
+
+  <h5 id="degree"><strong> </strong> <%= @cv.yea %></h5>
+  <br>
+  <h4 id="degree" style="font-weight: bold;" > <%= @cv.degree1 %></h4>
+
+  <h5 id="degree"> <%= @cv.uni1 %></h5>
+
+  <h5 id="degree"><string>Grade / Noten :</string> <%= @cv.grade1 %></h5>
+
+  <h5 id="degree"><strong> Abgeschlossen Jahr :</strong> <%= @cv.yea1 %></h5>
+  <br>
+  <h4 id="degree" style="font-weight: bold;" > <%= @cv.degree2 %></h4>
+
+  <h5 id="degree"> <%= @cv.uni2 %></h5>
+
+  <h5 id="degree"><string></string> <%= @cv.grade2 %></h5>
+
+  <h5 id="degree"><strong></strong> <%= @cv.yea2 %></h5>
+  <br>
+  </div>
+  </div>
+</div>
+</div>
+
+ <%#= link_to 'DOWNLOAD PDF', cv_path(::Cv.find(params[:id]), format: :pdf), class: "btn btn-outline-success my-2 my-sm-0" %>
+<%#= link_to ‘DOWNLOAD PDF’, cv_path(@cv, format: :pdf) %>
+<%#= link_to 'Edit', edit_cv_path(@cv) %> |
+<%#= link_to 'Back', cvs_path %>
+  <script>
+      window.onload = function () {
+    document.getElementById("download")
+        .addEventListener("click", () => {
+            const invoice = this.document.getElementById("invoice");
+            console.log(invoice);
+            console.log(window);
+            var opt = {
+                margin: 1,
+                filename: 'myfile.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf().from(invoice).set(opt).save();
+        })
+}
+</script>
+<!--
+<a href="javascript:generatePDF()">Dowload PDF</a>
+<script>
+  function generatePDF() {
+ var doc = new jsPDF();  //create jsPDF object
+  doc.fromHTML(document.getElementById("test"), // page element which you want to print as PDF
+  15,
+  15,
+  {
+    'width': 170  //set width
+  },
+  function(a)
+   {
+    doc.save("HTML2PDF.pdf"); // save file name as HTML2PDF.pdf
+  });
+}
+
+</script>
+-->

@@ -1,0 +1,95 @@
+// Place all the styles related to the Lebenslaufs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+  * {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  padding: 10px;
+  border-right: 0.5px solid dodgerblue;
+  border-top: 0.5px solid dodgerblue;
+  height: auto; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+  #left{
+    background: dodgerblue;
+  }
+  #right {
+    background: white;
+  }
+  #left h3 {
+    color: dodgerblue;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  img {
+    width: 100%;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    left: 0;
+  }
+#profile-pic {
+  text-align: center;
+}
+p {
+  color:white;
+  text-align: left;
+}
+#degree {
+  text-align: left;
+  padding: 2px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+}
+#bildung {
+  background: dodgerblue;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  width: 30%;
+  padding: 10px;
+
+}
+
+#beruf {
+   background: dodgerblue;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  width: 40%;
+  padding: 10px;
+}
+#company {
+  color: black;
+  font-weight:bold;
+  padding : 5px;
+}
+#company-title {
+  color: black;
+  font-weight:bold;
+  padding : 5px;
+
+}
+#start {
+  color: black;
+  font-size: 15px;
+
+}
+
+#span {
+  font-weight:bold;
+  color: white;
+  padding: 1px;
+}

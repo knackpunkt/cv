@@ -1,0 +1,98 @@
+<style>
+  .column-ans {
+    width: 90%;
+    height: auto;
+    position: relative;
+    border: 0.4px solid black;
+    padding: 20px;
+}
+
+  h3 {
+    text-align: left;
+    font-size: 14px;
+  }
+  .div p {
+    text-align: left;
+    font-size: 15px;
+    padding: 0 40% ;
+    margin: 2px 2px;
+    color: black;
+  }
+  .div-left h2 {
+    text-align: left;
+    font-size: 15px;
+    padding: 0 0 ;
+    margin: 0 0;
+  }
+  #title{
+    text-align: center;
+  }
+  strong {
+    color: blue;
+  }
+  .content p {
+    color: black;
+  }
+</style>
+<div class="row">
+  <div class="column-ans">
+<div class="div">
+<p>
+  <%= @anschreiben.name %>
+</p>
+<p>
+  <%= @anschreiben.adess %> <%= @anschreiben.plz %> <%= @anschreiben.city %>
+</p>
+</div><br>
+<div class="div-left">
+<h2>
+  <%= @anschreiben.company_name %>
+</h2>
+
+<h2>
+  <%= @anschreiben.comapay_adress %>
+</h2>
+
+<h2>
+  <%= @anschreiben.plzz %> <%= @anschreiben.company_city %>
+</h2>
+</div>
+<div class="bewerbung-title">
+  <h2 id="title">  Bewerbung als  <%= @anschreiben.bewerbung %> </h2>
+</div><br><br>
+<div class="content">
+  <p>Sehr geehrte Damen und Herren, </p>
+  <p>Mit großem Interesse habe ich Ihre Anzeige gelesen und möchte mich hiermit auf die ausgeschriebene Stelle als <%= @anschreiben.stelle %>  bewerben</p>
+  <p>
+Sie suchen eine lösungsorientierte und kommunikative Vertrieblerin, für die
+Stressresistenz, Organisationstalent, Flexibilität und Kundengespür nicht nur leere
+Worthülsen sind, sondern Praxisalltag? Dann stelle ich mich Ihnen gerne vor.
+Mein Sales Management Studium an der Musterhochschule werde ich im Juni mit dem
+Bachelorabschluss (voraussichtliche Note 1,4) beenden. Seit mehr als zwei Jahren bin
+ich als Werkstudentin in der Musterfirma GmbH tätig und bin bereits intensiv in die
+Koordination der Vertriebsmitarbeiter und <strong><%= @anschreiben.bewerbung %></strong> die Abwicklung im Vertriebsinnendienst
+eingebunden. Nun suche ich ein Unternehmen, in dem ich mein erlerntes Wissen
+einbringen sowie ausbauen kann. Dabei ist mir Ihr Unternehmen besonders im Kopf
+geblieben, da ich mich vollkommen mit den innovativen Verkaufsstrategien Ihres
+Unternehmens identifizieren kann.
+Es bereitet mir viel Freude, meine Kommunikationsstärke und meine
+betriebswirtschaftlichen Kenntnisse zu verbinden und gewinnbringend einzusetzen.
+Besonders die Akquise neuer Kunden und die Betreuung bestehender Kunden motiviert
+mich. Durch meine Tätigkeit als Werkstudentin habe ich gelernt, mit stressigen
+Situationen umzugehen, in diesen die Ruhe zu bewahren und dabei termingerecht gute
+Arbeit abzuliefern.
+Voller Elan stehe ich Ihnen für eine Anstellung ab dem 01.07.2020 zur Verfügung. Ich
+bedanke mich für die Berücksichtigung meiner Bewerbungsunterlagen und freue mich
+sehr darauf, Sie in einem persönlichen Gespräch von meinen Fähigkeiten zu
+überzeugen.
+  </p>
+  <p>
+  <%= @anschreiben.datum %>
+</p>
+<p>Mit freundlichen Grüßen</p>
+<p> <%= @anschreiben.name %></p>
+</div>
+  </div>
+</div>
+<%= link_to 'Edit', edit_anschreiben_path(@anschreiben) %> |
+<%= link_to 'Back', anschreibens_path %>

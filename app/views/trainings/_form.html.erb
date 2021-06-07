@@ -1,0 +1,36 @@
+<%= form_with(model: training, local: true) do |form| %>
+  <% if training.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(training.errors.count, "error") %> prohibited this training from being saved:</h2>
+
+      <ul>
+      <% training.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="column" style="width: 100%">
+  <div class="field">
+    <label>Geben Sie Die Frage im Vorstellungsgespräch ein</label>
+    <%= form.text_area :frage, id: :training_frage, placeholder: 'Welches Karriereziel haben Sie vor Augen?' %>
+  </div>
+
+  <div class="field">
+    <label>Geben Sie die Antwort ein</label>
+    <%= form.text_area :antwort, id: :training_antwort, placeholder: 'Auf diese Frage die richtige Antwort zu finden, ist...' %>
+  </div>
+
+ <div class="field">
+    <label>Vorstellungsgespräch Training Category</label><br>
+    <span class="select">
+              <%= form.select :job_type, collection: Training::JOB_TYPES, prompt: "Select a job type" %>
+            </span>
+  </div><br>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>
+</div>

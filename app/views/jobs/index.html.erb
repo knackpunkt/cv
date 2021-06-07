@@ -1,0 +1,203 @@
+<style>
+.row {
+    margin: 0 0;
+  }
+
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
+.column {
+  width: 90%;
+  padding: 2px;
+  text-align: center;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2);
+  background-color: white;
+  margin-left: 5%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 760px) {
+  .column {
+    width: 100%;
+    margin-left: 0%;
+
+  }
+}
+
+/* Style the counter cards */
+
+.column:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.card-profile h3 {
+  font-size: 27px;
+  color: cadetblue;
+}
+/*
+.card-profile h3:hover {
+  color: dodgerblue;
+}*/
+.card-profile h4 {
+  text-align: center;
+  font-size: 17px;
+}
+
+.row #profile {
+  color: orangered;
+  text-align: center;
+}
+strong{
+  color: cadetblue;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px;
+}
+h4, h5 {
+  text-align: center;
+
+}
+
+.apply .btn {
+  width: 40%;
+  background-color:mediumseagreen;
+  color: white;
+  padding: 10px;
+}
+.apply .btn:hover {
+  background: orangered;
+}
+.btns {
+  padding: 20px;
+
+}
+.btns .btn {
+  width: 20%;
+  color: black;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+/*.container-1 {
+  position: absolute;
+  font-family: Arial;
+  top:  50px;
+  right: 0;
+  left: 0;
+}
+.container-1  img {
+  height: 335px;
+}
+.text-block {
+  position: absolute;
+  bottom: 2%;
+  width: 100%;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #00000088;
+}
+.text-block0 {
+  position: absolute;
+  top: 3%;
+  width: 100%;
+  background-color: #00000000;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.text-block0 h4 {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+} */
+#anzeigen {
+  font-size: 20px;
+}
+ #anzeigen:hover {
+  color: white;
+}
+#delete {
+  color: white;
+  background: rgb(255, 0, 0);
+  font-size: 20px;
+}
+#delete:hover {
+  color: red;
+  background: white;
+}
+#edit {
+  font-size: 20px;
+  background: orange;
+  color: white;
+
+}
+ #edit:hover{
+  color: darkorange;
+  background: white;
+}
+
+@media screen and (max-width: 760px) {
+  .btns .btn {
+    width: 40%;
+
+  }
+}
+</style>
+<!--
+<div class="container-1">
+  <div class="text-block0">
+    <h4 style="color:greenyellow;" > Finden Sie Ihren Traumjob in Berlin & Branenburg </h4>
+    <h4>Erstellen Sie Ihren Lebenslauf auf Englisch oder Deutsch und laden Sie ihn kostenlos als PDF herunter.</h4>
+    <h4>Schreiben Sie Ihre Anschreiben .</h4>
+  </div>
+  <img  src="https://res.cloudinary.com/duf8tsxnt/image/upload/v1615155596/ber_pxf9pc.jpg" alt="Berlin" style="width:100%;">
+  <div class="text-block">
+ </div>
+</div>-->
+<%= render 'panel' %>
+<p id="notice"><%= notice %></p>
+ <% @jobs.each do |job| %>
+<div class="container-anz">
+<div class="row">
+   <div class="column">
+        <h2 id="profile"><%= job.title %></h2>
+ <p> <%= job.description %></p>
+ <h4><strong> <%= job.location %>  </strong></h4>
+  <!-- <p><strong>Voraussetzungeen des Job:</strong> <br><%= job.requirement %></p>
+
+   <h4><strong>Wann :</strong> <%= job.start %></h4>
+   <h4><strong>Entgehalt:</strong> <%= job.salary %> ‎€</h4>
+   <h4><strong>E-mail:  </strong> <%= job.email %></h4> -->
+   <h5><strong> <%= job.job_type %> </strong></h5>
+
+     <div class="btns">
+<%= link_to 'Job Anzeigen', job, class: 'btn btn-info', id: 'anzeigen' %>
+<% if logged_in? && current_user.admin? %>
+<%= link_to 'Edit', edit_job_path(job), class: 'btn btn-warning', id: 'edit' %>
+<%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', id: 'delete' %> <% end %>
+</div>
+    </div>
+ </div>
+</div>
+<% end %>
+<br>
