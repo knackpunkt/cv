@@ -24,6 +24,7 @@ input[type=submit]:hover {
   margin-right: auto;
 }
 </style>
+
 <%= form_with(model: anschreiben, local: true) do |form| %>
   <% if anschreiben.errors.any? %>
     <div id="error_explanation">

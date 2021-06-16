@@ -231,7 +231,7 @@ h1 {
   <%= form.file_field :avatar, style: 'padding: 27px;' %>
 </div>
   <div class="field">
-    <label>Full Name الاسم </label>
+    <label>Full Name </label>
     <%= form.text_field :name, id: :cv_name, placeholder: 'Monther Ahmad' %>
   </div>
 
@@ -290,7 +290,7 @@ h1 {
 <!-- Education-->
   <div class="field">
     <label>Degree</label><br>
-    <%= form.select :degree, options_for_select(["Master", "Bachelor", "Ausbildung", "Diploma", "Other"],:disabled => ["Select One"]), :class => 'genForm_dropBox' %>
+    <%= form.select :degree, options_for_select([ '', "Master", "Bachelor", "Ausbildung", "Diploma", "Other"],:disabled => ["Select One"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div class="field">
@@ -311,7 +311,7 @@ h1 {
   <div class="column">
   <div class="field">
     <label>Degree</label><br>
-    <%= form.select :degree1, options_for_select(["Master", "Bachelor", "Ausbildung", "Diploma", "Other"],:disabled => ["Select One"]), :class => 'genForm_dropBox' %>
+    <%= form.select :degree1, options_for_select(['', "Master", "Bachelor", "Ausbildung", "Diploma", "Other", ''],:disabled => ["Select One"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div class="field">
@@ -333,7 +333,7 @@ h1 {
 <div class="column">
   <div class="field">
     <label>Degree</label><br>
-    <%= form.select :degree2, options_for_select(["Master", "Bachelor", "Ausbildung", "Diploma", "Other"],:disabled => ["Select One"]), :class => 'genForm_dropBox' %>
+    <%= form.select :degree2, options_for_select(['', "Master", "Bachelor", "Ausbildung", "Diploma", "Other", ''],:disabled => ["Select One"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div class="field">

@@ -201,8 +201,8 @@ h1 {
 <div class="tab">
  <button class="tablink" onclick="openPage('Index', this, '#40E0D0')" id="defaultOpen">Persönlichen Daten</button>
   <button class="tablink" onclick="openPage('Home', this, '#40E0D0')">Studium</button>
-<button class="tablink" onclick="openPage('News', this, '#40E0D0')">Erfahrungen  / Arbeit</button>
-<button class="tablink" onclick="openPage('job', this, '#40E0D0')">Mehr  Erfahrung</button>
+<button class="tablink" onclick="openPage('News', this, '#40E0D0')">Erfahrungen der Arbeit</button>
+<button class="tablink" onclick="openPage('job', this, '#40E0D0')">Mehr Erfahrung</button>
 <button class="tablink" onclick="openPage('Contact', this, '#40E0D0')">Kompetenzen</button>
 <button class="tablink" onclick="openPage('About', this, '#40E0D0')">Sprachen</button>
 </div>
@@ -349,67 +349,6 @@ h1 {
   </div>
  </div>
 </div>
-<!--
-  <div class="field">
-    <%= form.label :degree3 %>
-    <%= form.text_field :degree3, id: :cv_degree3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :uni3 %>
-    <%= form.text_field :uni3, id: :cv_uni3 %>
-  </div>
-  <div class="field">
-    <%= form.label :grade3 %>
-    <%= form.text_field :grade3, id: :cv_grade3 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year3 %>
-    <%= form.date_field :year3, id: :cv_year3 %>
-  </div>
-
-<div class="column">
-  <div class="field">
-    <%= form.label :degree4 %>
-    <%= form.text_field :degree4, id: :cv_degree4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :uni4 %>
-    <%= form.text_field :uni4, id: :cv_uni4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :grade4 %>
-    <%= form.text_field :grade4, id: :cv_grade4 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year4 %>
-    <%= form.date_field :year4, id: :cv_year4 %>
-  </div> -->
-<!--
-  <div class="field">
-    <%= form.label :degree5 %>
-    <%= form.text_field :degree5, id: :cv_degree5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :uni5 %>
-    <%= form.text_field :uni5, id: :cv_uni5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :grade5 %>
-    <%= form.text_field :grade5, id: :cv_grade5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :year5 %>
-    <%= form.date_field :year5, id: :cv_year5 %>
-  </div>-->
-
 
 <div id="News" class="tabcontent">
 <h1>Füllen Sie Ihre praktischen Erfahrungen und Ihre Arbeit aus</h1>
@@ -545,18 +484,23 @@ h1 {
    <li><%= form.text_field :skill2, id: :cv_skill2, placeholder: '3- Kompetenz / Resservation System' %></li>
   <label>Kompetenz</label>
    <li><%= form.text_field :skill3, id: :cv_skill3, placeholder: '4- Kompetenz / html / Css etc ' %></li>
+  <label>Kompetenz</label>
+    <li><%= form.text_field :skill4, id: :cv_skill4, placeholder: '5- Kompetenz / Javascript ' %></li>
    </ul>
  </div>
 <div class="column-1">
   <ul>
-    <label>Kompetenz</label>
-    <li><%= form.text_field :skill4, id: :cv_skill4, placeholder: '5- Kompetenz / Javascript ' %></li>
+
     <label>Kompetenz</label>
    <li><%= form.text_field :skill5, id: :cv_skill5, placeholder: '6- Kompetenz / Photoshop' %></li>
    <label>Kompetenz</label>
   <li><%= form.text_field :skill6, id: :cv_skill6, placeholder: '7- Kompetenz /  ' %></li>
   <label>Kompetenz</label>
   <li><%= form.text_field :skill7, id: :cv_skill7, placeholder: '8- Kompetenz ' %></li>
+  <label>Kompetenz</label>
+   <li><%= form.text_field :skill3, id: :cv_skill3, placeholder: '9- Kompetenz / html / Css etc ' %></li>
+     <label>Kompetenz</label>
+    <li><%= form.text_field :skill4, id: :cv_skill4, placeholder: '10- Kompetenz / Javascript ' %></li>
   </ul>
   </div>
  </div>
